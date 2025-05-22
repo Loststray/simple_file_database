@@ -10,7 +10,11 @@ root.title("CSV内容显示")
 root.geometry("800x600")
 
 # 初始化CSV读取器
-csv_path = "./project_database/data.csv"
+csv_path = ".\\data\\data.csv"
+if not os.path.exists(csv_path):
+    os.mkdir('data')
+    with open(csv_path, "w",encoding='UTF-8') as f:
+        f.write('标题,路径,主标签')
 reader = CSV_worker(csv_path)
 columns = reader.fieldnames_
 reader.read()
